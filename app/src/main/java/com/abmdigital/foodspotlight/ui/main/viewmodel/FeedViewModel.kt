@@ -8,10 +8,11 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.abmdigital.foodspotlight.data.mockapi.MockApiHelperImpl
 import com.abmdigital.foodspotlight.data.model.User
+import com.abmdigital.foodspotlight.repository.DataRepository
 import com.abmdigital.foodspotlight.utils.Resource
 import kotlinx.coroutines.launch
 
-class FeedViewModel @ViewModelInject constructor(private val dataRepository: MockApiHelperImpl) :
+class FeedViewModel @ViewModelInject constructor(private val dataRepository: DataRepository) :
     ViewModel() {
 
     private val TAG: String = FeedViewModel::class.java.name
@@ -22,10 +23,10 @@ class FeedViewModel @ViewModelInject constructor(private val dataRepository: Moc
         get() = _users
 
     init {
-        fetchUsers()
+        fetchUserData()
     }
 
-    private fun fetchUsers() {
+    private fun fetchUserData() {
         viewModelScope.launch {
             _users.postValue(Resource.loading(null))
 

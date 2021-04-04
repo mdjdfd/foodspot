@@ -27,6 +27,8 @@ data class OtherInformation(
     @SerializedName("description")
     val description: String? = null,
     @SerializedName("total_likes")
-    val total_likes: Int? = null
+    val total_likes: Int? = null,
+    @SerializedName("total_dislikes")
+    val total_dislikes: Int? = null,
 
 )

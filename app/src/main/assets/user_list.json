@@ -9,33 +9,36 @@
       "title": "Fish Lover",
       "subtitle": "People who wants to test various sea fish please join us bla bla bla",
       "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-      "total_likes": 85
+      "total_likes": 85,
+      "total_dislikes": 9
     }
   },
   {
     "user_id": 2,
-    "user_name": "Junaid Fahad",
-    "user_image": "https://avatars.githubusercontent.com/u/17274068?v=4",
+    "user_name": "Christina Müller",
+    "user_image": "https://profile-images.xing.com/images/d36dac7129ccafc0798a09f9bc6a428b-2/christina-müller.1024x1024.jpg",
     "location": "Passau, Germany",
-    "post_image": "http://koreabizwire.com/wp/wp-content/uploads/2015/02/20140316_1355557.jpg",
+    "post_image": "https://therecipecritic.com/wp-content/uploads/2019/08/vegetable_stir_fry-500x375.jpg",
     "other_information": {
-      "title": "Fish Lover",
-      "subtitle": "People who wants to test various sea fish please join us bla bla bla",
+      "title": "Vegetarian",
+      "subtitle": "People who wants to save environment join me",
       "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-      "total_likes": 85
+      "total_likes": 150,
+      "total_dislikes": 2
     }
   },
   {
     "user_id": 3,
-    "user_name": "Junaid Fahad",
-    "user_image": "https://avatars.githubusercontent.com/u/17274068?v=4",
-    "location": "Passau, Germany",
-    "post_image": "http://koreabizwire.com/wp/wp-content/uploads/2015/02/20140316_1355557.jpg",
+    "user_name": "Lisa Aigner",
+    "user_image": "https://miro.medium.com/fit/c/1360/1360/1*RVmyxD-L34TqBPXP34v8NQ.jpeg",
+    "location": "München, Germany",
+    "post_image": "https://assets.tmecosys.com/image/upload/t_web767x639/img/recipe/ras/Assets/D7889FB7-3957-45A0-86FB-3F5BF28C4B43/Derivates/0ac187d7-d257-4158-9868-5909722a0b4b.jpg",
     "other_information": {
-      "title": "Fish Lover",
-      "subtitle": "People who wants to test various sea fish please join us bla bla bla",
+      "title": "Having Cookie Dough Ice Cream",
+      "subtitle": "Come and join me!",
       "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-      "total_likes": 85
+      "total_likes": 35,
+      "total_dislikes": 10
     }
   },
   {
@@ -48,7 +51,8 @@
       "title": "Fish Lover",
       "subtitle": "People who wants to test various sea fish please join us bla bla bla",
       "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-      "total_likes": 85
+      "total_likes": 2,
+      "total_dislikes": 40
     }
   }
 ]

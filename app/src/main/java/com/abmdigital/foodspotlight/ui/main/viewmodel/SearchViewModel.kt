@@ -1,11 +1,12 @@
 package com.abmdigital.foodspotlight.ui.main.viewmodel
 
-import android.util.Log
+
 import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.ViewModel
 import com.abmdigital.foodspotlight.data.mockapi.MockApiHelperImpl
+import com.abmdigital.foodspotlight.repository.DataRepository
 
-class SearchViewModel @ViewModelInject constructor(private val dataRepository: MockApiHelperImpl) :
+class SearchViewModel @ViewModelInject constructor(private val dataRepository: DataRepository) :
     ViewModel() {
     private val TAG: String = SearchViewModel::class.java.name
 
@@ -13,8 +14,4 @@ class SearchViewModel @ViewModelInject constructor(private val dataRepository: M
     }
 
 
-//    private val _text = MutableLiveData<String>().apply {
-//        value = randomString
-//    }
-//    val text: LiveData<String> = _text
 }

@@ -2,4 +2,8 @@
     <string name="app_name">FoodSpotLight</string>
     <string name="title_feed">Feed</string>
     <string name="title_search">Search</string>
+    <string name="text_title">Title</string>
+    <string name="text_subtitle">Subtitle</string>
+    <string name="total_likes">%2$d Like</string>
+    <string name="total_dislikes">%2$d Dislike</string>
 </resources>
