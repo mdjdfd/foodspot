@@ -21,7 +21,7 @@ import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
-class ApplicationModule {
+class DataModule {
 
 
     @Singleton
@@ -65,5 +65,6 @@ class ApplicationModule {
     @Provides
     @Singleton
     fun provideData(mockApiHelperImpl: MockApiHelperImpl): MockApiHelper = mockApiHelperImpl
+
 
 }
