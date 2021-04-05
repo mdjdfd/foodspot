@@ -19,7 +19,6 @@ import kotlinx.android.synthetic.main.fragment_search.view.*
 import javax.inject.Inject
 import kotlin.collections.ArrayList
 
-
 @AndroidEntryPoint
 class SearchFragment : Fragment() {
     private val TAG: String = SearchFragment::class.java.name
