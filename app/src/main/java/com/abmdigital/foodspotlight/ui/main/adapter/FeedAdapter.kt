@@ -1,6 +1,5 @@
 package com.abmdigital.foodspotlight.ui.main.adapter
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,11 +12,12 @@ import kotlinx.android.synthetic.main.item_view.view.*
 import kotlinx.android.synthetic.main.user_section.view.*
 
 
-class FeedAdapter(private val users: ArrayList<User>): RecyclerView.Adapter<FeedAdapter.DataViewHolder>(){
+class FeedAdapter(private val users: ArrayList<User>) :
+    RecyclerView.Adapter<FeedAdapter.FeedViewHolder>() {
 
-    class DataViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    class FeedViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
-        private val TAG: String = DataViewHolder::class.java.name
+        private val TAG: String = FeedViewHolder::class.java.name
 
         fun bind(user: User) {
             itemView.textview_username.text = user.user_name
@@ -27,8 +27,6 @@ class FeedAdapter(private val users: ArrayList<User>): RecyclerView.Adapter<Feed
             itemView.textview_likes.text = user.other_information.total_likes.toString()
             itemView.textview_dislikes.text = user.other_information.total_dislikes.toString()
 
-
-            Log.i(TAG, "_log bind : ${itemView.imageview_avatar.context}")
 
 
             Glide.with(itemView.imageview_avatar.context)
@@ -47,13 +45,15 @@ class FeedAdapter(private val users: ArrayList<User>): RecyclerView.Adapter<Feed
 
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DataViewHolder {
-        return DataViewHolder(LayoutInflater.from(parent.context).inflate(
-            R.layout.item_view, parent, false
-        ))
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FeedViewHolder {
+        return FeedViewHolder(
+            LayoutInflater.from(parent.context).inflate(
+                R.layout.item_view, parent, false
+            )
+        )
     }
 
-    override fun onBindViewHolder(holder: DataViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: FeedViewHolder, position: Int) {
         holder.bind(users[position])
     }
 
@@ -61,7 +61,7 @@ class FeedAdapter(private val users: ArrayList<User>): RecyclerView.Adapter<Feed
         return users.size
     }
 
-    fun addData(list: List<User>){
+    fun addData(list: List<User>) {
         users.addAll(list)
     }
 

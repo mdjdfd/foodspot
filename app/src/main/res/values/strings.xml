@@ -6,4 +6,5 @@
     <string name="text_subtitle">Subtitle</string>
     <string name="total_likes">%2$d Like</string>
     <string name="total_dislikes">%2$d Dislike</string>
+    <string name="button_search">Search</string>
 </resources>

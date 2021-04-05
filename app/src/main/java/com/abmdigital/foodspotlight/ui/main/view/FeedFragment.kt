@@ -1,6 +1,5 @@
 package com.abmdigital.foodspotlight.ui.main.view
 
-import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -30,16 +29,10 @@ class FeedFragment : Fragment(R.layout.fragment_feed) {
     private val TAG: String = FeedFragment::class.java.name
 
     private val feedViewModel: FeedViewModel by viewModels()
-    private lateinit var adapter: FeedAdapter
-
+    private lateinit var feedAdapter: FeedAdapter
 
     @Inject
-    lateinit var app: ApplicationController
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        Log.i(TAG, "_log onCreate : $feedViewModel")
-    }
+    lateinit var applicationController: ApplicationController
 
 
     override fun onCreateView(
@@ -60,9 +53,9 @@ class FeedFragment : Fragment(R.layout.fragment_feed) {
 
 
     private fun setupUI(root: View) {
-        root.recyclerview_feed.layoutManager = LinearLayoutManager(app)
-        adapter = FeedAdapter(arrayListOf())
-        root.recyclerview_feed.adapter = adapter
+        root.recyclerview_feed.layoutManager = LinearLayoutManager(applicationController)
+        feedAdapter = FeedAdapter(arrayListOf())
+        root.recyclerview_feed.adapter = feedAdapter
     }
 
     private fun setupObserver() {
@@ -79,7 +72,7 @@ class FeedFragment : Fragment(R.layout.fragment_feed) {
                 }
                 Status.ERROR -> {
                     recyclerview_feed.visibility = View.GONE
-                    Toast.makeText(app, it.message, Toast.LENGTH_LONG).show()
+                    Toast.makeText(applicationController, it.message, Toast.LENGTH_LONG).show()
                 }
             }
         })
@@ -87,7 +80,7 @@ class FeedFragment : Fragment(R.layout.fragment_feed) {
 
 
     private fun renderList(users: List<User>) {
-        adapter.addData(users)
-        adapter.notifyDataSetChanged()
+        feedAdapter.addData(users)
+        feedAdapter.notifyDataSetChanged()
     }
 }

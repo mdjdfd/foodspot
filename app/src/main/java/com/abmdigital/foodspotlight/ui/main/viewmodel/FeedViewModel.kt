@@ -14,7 +14,6 @@ import kotlinx.coroutines.launch
 
 class FeedViewModel @ViewModelInject constructor(private val dataRepository: DataRepository) :
     ViewModel() {
-
     private val TAG: String = FeedViewModel::class.java.name
 
     private val _users = MutableLiveData<Resource<List<User>>>()
