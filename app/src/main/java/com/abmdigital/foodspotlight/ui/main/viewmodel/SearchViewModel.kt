@@ -1,19 +1,17 @@
 package com.abmdigital.foodspotlight.ui.main.viewmodel
-
-
-import android.util.Log
-import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.abmdigital.foodspotlight.data.mockapi.MockApiHelperImpl
 import com.abmdigital.foodspotlight.data.model.User
 import com.abmdigital.foodspotlight.repository.DataRepository
 import com.abmdigital.foodspotlight.utils.Resource
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class SearchViewModel @ViewModelInject constructor(private val dataRepository: DataRepository) :
+@HiltViewModel
+class SearchViewModel @Inject constructor(private val dataRepository: DataRepository) :
     ViewModel() {
     private val TAG: String = SearchViewModel::class.java.name
 

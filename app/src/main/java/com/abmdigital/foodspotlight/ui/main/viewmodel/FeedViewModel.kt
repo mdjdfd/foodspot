@@ -10,9 +10,12 @@ import com.abmdigital.foodspotlight.data.mockapi.MockApiHelperImpl
 import com.abmdigital.foodspotlight.data.model.User
 import com.abmdigital.foodspotlight.repository.DataRepository
 import com.abmdigital.foodspotlight.utils.Resource
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class FeedViewModel @ViewModelInject constructor(private val dataRepository: DataRepository) :
+@HiltViewModel
+class FeedViewModel @Inject constructor(private val dataRepository: DataRepository) :
     ViewModel() {
     private val TAG: String = FeedViewModel::class.java.name
 
