@@ -1,11 +1,9 @@
 package com.abmdigital.foodspotlight.ui.main.viewmodel
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.abmdigital.foodspotlight.data.mockapi.MockApiHelperImpl
 import com.abmdigital.foodspotlight.data.model.User
 import com.abmdigital.foodspotlight.repository.DataRepository
 import com.abmdigital.foodspotlight.utils.Resource

@@ -23,22 +23,20 @@ import javax.inject.Singleton
 @InstallIn(SingletonComponent::class)
 class DataModule {
 
-
-    @Singleton
-    @Provides
-    fun provideContext(application: Application): Context = application
-
-
     @Singleton
     @Provides
     fun provideApplication(@ApplicationContext app: Context): ApplicationController {
         return app as ApplicationController
     }
 
+    @Singleton
+    @Provides
+    fun provideContext(application: Application): Context = application
+
     @Provides
     @Singleton
-    fun provideJsonUtil(applicationController: ApplicationController): JsonUtil =
-        JsonUtil(applicationController)
+    fun provideJsonUtil(appContext: Context): JsonUtil =
+        JsonUtil(appContext)
 
     @Provides
     @Singleton

@@ -1,5 +1,6 @@
 package com.abmdigital.foodspotlight.ui.main.view
 
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -30,7 +31,7 @@ class FeedFragment: Fragment(R.layout.fragment_feed) {
     private lateinit var feedAdapter: FeedAdapter
 
     @Inject
-    lateinit var applicationController: ApplicationController
+    lateinit var appContext: Context
 
 
     override fun onCreateView(
@@ -51,7 +52,7 @@ class FeedFragment: Fragment(R.layout.fragment_feed) {
 
 
     private fun setupUI(root: View) {
-        root.recyclerview_feed.layoutManager = LinearLayoutManager(applicationController)
+        root.recyclerview_feed.layoutManager = LinearLayoutManager(appContext)
         feedAdapter = FeedAdapter(arrayListOf())
         root.recyclerview_feed.adapter = feedAdapter
     }
@@ -70,7 +71,7 @@ class FeedFragment: Fragment(R.layout.fragment_feed) {
                 }
                 Status.ERROR -> {
                     recyclerview_feed.visibility = View.GONE
-                    Toast.makeText(applicationController, it.message, Toast.LENGTH_LONG).show()
+                    Toast.makeText(appContext, it.message, Toast.LENGTH_LONG).show()
                 }
             }
         })

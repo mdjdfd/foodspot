@@ -1,9 +1,9 @@
 package com.abmdigital.foodspotlight.data.mockapi
 
-import com.abmdigital.foodspotlight.ApplicationController
+import android.content.Context
 import java.io.IOException
 
-class JsonUtil(private val applicationController: ApplicationController) {
+class JsonUtil(private val appContext: Context) {
     private lateinit var json: String
 
     init {
@@ -12,7 +12,7 @@ class JsonUtil(private val applicationController: ApplicationController) {
 
     fun getJson(): String {
         try {
-            val inputStream = applicationController.assets.open("user_list.json")
+            val inputStream = appContext.assets.open("user_list.json")
             val buffer = ByteArray(inputStream.available())
             inputStream.use { it.read(buffer) }
             json = String(buffer)
