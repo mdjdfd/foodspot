@@ -2,7 +2,7 @@ package com.abmdigital.foodspotlight.ui.main.view
 
 import android.app.Application
 import android.content.Context
-import com.abmdigital.foodspotlight.ApplicationController
+import com.abmdigital.foodspotlight.CoroutineTestRule
 import com.abmdigital.foodspotlight.data.mockapi.JsonUtil
 import com.abmdigital.foodspotlight.data.mockapi.MockApiHelper
 import com.abmdigital.foodspotlight.data.mockapi.MockApiHelperImpl
@@ -13,13 +13,16 @@ import com.google.gson.reflect.TypeToken
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
-import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.android.testing.HiltAndroidRule
 import dagger.hilt.android.testing.HiltAndroidTest
 import dagger.hilt.android.testing.UninstallModules
 import dagger.hilt.components.SingletonComponent
+import junit.framework.TestCase.assertEquals
 import junit.framework.TestCase.assertNotNull
-import junit.framework.TestCase.assertTrue
+import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.runBlocking
+import org.hamcrest.MatcherAssert.assertThat
+import org.hamcrest.core.StringContains.containsString
 import org.junit.After
 import org.junit.Before
 import org.junit.Rule
@@ -31,10 +34,14 @@ import javax.inject.Singleton
 
 @UninstallModules(DataModule::class)
 @HiltAndroidTest
+@ExperimentalCoroutinesApi
 class DataModuleTest {
 
     @get:Rule
     var hiltRule = HiltAndroidRule(this)
+
+    @get:Rule
+    var coroutinesTestRule = CoroutineTestRule()
 
 
     @Inject
@@ -90,8 +97,18 @@ class DataModuleTest {
     }
 
     @Test
-    fun testData(){
+    fun testDataNotNull(){
         assertNotNull(mockApiHelper)
+    }
+
+    @Test
+    fun testData() = runBlocking {
+        val mockApiHelperImpl = MockApiHelperImpl(mockApiHelper.getUsers());
+
+        assertEquals(1, mockApiHelperImpl.getUsers()[0].user_id)
+        assertThat(mockApiHelperImpl.getUsers()[0].user_name, containsString("Fahad"))
+        assertThat(mockApiHelperImpl.getUsers()[0].location, containsString("Passau"))
+        assertThat(mockApiHelperImpl.getUsers()[0].other_information.title, containsString("Fish"))
     }
 
 
