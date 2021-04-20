@@ -8,7 +8,7 @@
         <import type="android.view.View"/>
         <variable
             name="user"
-            type="com.abmdigital.foodspotlight.data.model.User" />
+            type="com.opensource.foodspotlight.data.model.User" />
     </data>
 
 <androidx.constraintlayout.widget.ConstraintLayout

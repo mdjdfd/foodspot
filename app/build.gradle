@@ -11,14 +11,14 @@ android {
     buildToolsVersion "30.0.3"
 
     defaultConfig {
-        applicationId "com.abmdigital.foodspotlight"
+        applicationId "com.opensource.foodspotlight"
         minSdkVersion 16
         targetSdkVersion 30
         versionCode 1
         versionName "1.0"
         multiDexEnabled true
 
-        testInstrumentationRunner "com.abmdigital.foodspotlight.FoodSpotTestRunner"
+        testInstrumentationRunner "com.opensource.foodspotlight.FoodSpotTestRunner"
     }
 
     buildTypes {
