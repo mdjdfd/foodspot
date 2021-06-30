@@ -1,15 +1,15 @@
-package com.opensource.foodspotlight.ui.main.view
+package com.opensource.foodspotlight.di.module
 
 import android.app.Application
 import android.content.Context
+import com.google.gson.Gson
+import com.google.gson.reflect.TypeToken
 import com.opensource.foodspotlight.CoroutineTestRule
 import com.opensource.foodspotlight.data.mockapi.JsonUtil
 import com.opensource.foodspotlight.data.mockapi.MockApiHelper
 import com.opensource.foodspotlight.data.mockapi.MockApiHelperImpl
 import com.opensource.foodspotlight.data.model.User
 import com.opensource.foodspotlight.di.module.DataModule
-import com.google.gson.Gson
-import com.google.gson.reflect.TypeToken
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -36,11 +36,10 @@ import javax.inject.Singleton
 @HiltAndroidTest
 @ExperimentalCoroutinesApi
 class DataModuleTest {
-
-    @get:Rule
+    @get:Rule(order = 0)
     var hiltRule = HiltAndroidRule(this)
 
-    @get:Rule
+    @get:Rule(order = 1)
     var coroutinesTestRule = CoroutineTestRule()
 
 
@@ -63,7 +62,6 @@ class DataModuleTest {
     lateinit var mockApiHelper: MockApiHelper
 
 
-
     @Before
     fun setUp() {
         hiltRule.inject()
@@ -71,17 +69,17 @@ class DataModuleTest {
 
 
     @Test
-    fun testContext(){
+    fun testContext() {
         assertNotNull(appContext)
     }
 
     @Test
-    fun testGson(){
+    fun testGson() {
         assertNotNull(gson)
     }
 
     @Test
-    fun testJsonString(){
+    fun testJsonString() {
         assertNotNull(jsonString)
     }
 
@@ -92,12 +90,12 @@ class DataModuleTest {
 
 
     @Test
-    fun testJsonConverter(){
+    fun testJsonConverter() {
         assertNotNull(mockApiHelperImpl)
     }
 
     @Test
-    fun testDataNotNull(){
+    fun testDataNotNull() {
         assertNotNull(mockApiHelper)
     }
 
@@ -112,18 +110,17 @@ class DataModuleTest {
     }
 
 
+
     @After
     fun tearDown() {
     }
 
-
 }
-
 
 
 @Module
 @InstallIn(SingletonComponent::class)
-class TestDataModule {
+object TestDataModule {
 
     @Singleton
     @Provides
@@ -161,4 +158,9 @@ class TestDataModule {
     @Singleton
     fun testProvideData(mockApiHelperImpl: MockApiHelperImpl): MockApiHelper = mockApiHelperImpl
 }
+
+
+
+
+
 

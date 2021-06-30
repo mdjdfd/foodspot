@@ -10,18 +10,30 @@ import com.opensource.foodspotlight.data.mockapi.MockApiHelperImpl
 import com.google.gson.Gson
 
 import com.google.gson.reflect.TypeToken
+import com.opensource.foodspotlight.BuildConfig
+import com.opensource.foodspotlight.data.api.ApiHelper
+import com.opensource.foodspotlight.data.api.ApiHelperImpl
+import com.opensource.foodspotlight.data.api.ApiService
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
+import okhttp3.OkHttpClient
+import okhttp3.logging.HttpLoggingInterceptor
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
 import java.lang.reflect.Type
 import javax.inject.Singleton
 
 
 @Module
 @InstallIn(SingletonComponent::class)
-class DataModule {
+object DataModule {
+
+
+//    @Provides
+//    fun provideBaseUrl() = BuildConfig.CURRENCY_BASE_URL + BuildConfig.API_VERSION
 
     @Singleton
     @Provides
@@ -32,6 +44,37 @@ class DataModule {
     @Singleton
     @Provides
     fun provideContext(application: Application): Context = application
+
+
+    @Provides
+    @Singleton
+    fun provideOkHttpClient() = if (BuildConfig.DEBUG) {
+        val loggingInterceptor = HttpLoggingInterceptor()
+        loggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY)
+        OkHttpClient.Builder().addInterceptor(loggingInterceptor).build()
+    } else {
+        OkHttpClient.Builder().build()
+    }
+
+
+    @Provides
+    @Singleton
+    fun provideRetrofit(okHttpClient: OkHttpClient): Retrofit =
+        Retrofit.Builder().addConverterFactory(GsonConverterFactory.create()).baseUrl("https://api.nomics.com/v1/")
+            .client(okHttpClient).build()
+
+
+    @Provides
+    @Singleton
+    fun provideApiService(retrofit: Retrofit): ApiService = retrofit.create(ApiService::class.java)
+
+    @Provides
+    @Singleton
+    fun provideApiHelper(apiHelper: ApiHelperImpl): ApiHelper = apiHelper
+
+
+
+
 
     @Provides
     @Singleton

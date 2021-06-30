@@ -2,6 +2,7 @@ package com.opensource.foodspotlight.ui.main.view
 
 import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,8 +13,10 @@ import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.opensource.foodspotlight.ApplicationController
 import com.opensource.foodspotlight.R
+import com.opensource.foodspotlight.data.model.Currency
 import com.opensource.foodspotlight.data.model.User
 import com.opensource.foodspotlight.ui.main.adapter.FeedAdapter
+import com.opensource.foodspotlight.ui.main.viewmodel.CurrencyViewModel
 import com.opensource.foodspotlight.ui.main.viewmodel.FeedViewModel
 import com.opensource.foodspotlight.utils.Status
 import dagger.hilt.android.AndroidEntryPoint
@@ -28,6 +31,7 @@ class FeedFragment: Fragment(R.layout.fragment_feed) {
     private val TAG: String = FeedFragment::class.java.name
 
     private val feedViewModel: FeedViewModel by viewModels()
+    private val currencyViewModel: CurrencyViewModel by viewModels()
     private lateinit var feedAdapter: FeedAdapter
 
     @Inject
@@ -75,6 +79,18 @@ class FeedFragment: Fragment(R.layout.fragment_feed) {
                 }
             }
         })
+
+        currencyViewModel.currency.observe(viewLifecycleOwner, {
+            when (it.status){
+                Status.SUCCESS -> {
+                    it.data?.let { currency -> renderCurrencyList(currency) }
+                }
+            }
+        })
+    }
+
+    private fun renderCurrencyList(currency: List<Currency>) {
+        Log.i(TAG, "_log setupObserver : $currency")
     }
 
 

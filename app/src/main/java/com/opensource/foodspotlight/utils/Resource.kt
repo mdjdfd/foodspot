@@ -1,6 +1,6 @@
 package com.opensource.foodspotlight.utils
 
-class Resource<out T>(val status: Status, val data: T?, val message:String?) {
+data class Resource<out T>(val status: Status, val data: T?, val message:String?) {
     companion object{
         fun <T> loading(data: T?) = Resource(Status.LOADING, data, null)
         fun <T> success(data: T?) = Resource(Status.SUCCESS, data, null)
